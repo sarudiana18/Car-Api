@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "E/LEtaH2LqfRG11+w1YPqP7a/VgX+zvsaAVtgJsixczUh6TVJTmyvc57duRqICxAnS8BKDp18EfxNsKIxCd9EQ==",
+  "success": true,
+  "projectFilePath": "/Users/dsaru/RiderProjects/ConsoleApp2/ConsoleApp2/ConsoleApp2.csproj",
+  "expectedPackageFiles": [
+    "/Users/dsaru/.nuget/packages/microsoft.aspnetcore.headerpropagation/6.0.36/microsoft.aspnetcore.headerpropagation.6.0.36.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.apidescription.server/6.0.5/microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.caching.abstractions/2.1.2/microsoft.extensions.caching.abstractions.2.1.2.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.caching.memory/2.1.23/microsoft.extensions.caching.memory.2.1.23.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.configuration/2.1.1/microsoft.extensions.configuration.2.1.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.configuration.abstractions/2.1.1/microsoft.extensions.configuration.abstractions.2.1.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.configuration.binder/2.1.10/microsoft.extensions.configuration.binder.2.1.10.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.dependencyinjection/6.0.2/microsoft.extensions.dependencyinjection.6.0.2.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.dependencyinjection.abstractions/6.0.0/microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.http/6.0.1/microsoft.extensions.http.6.0.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.logging/6.0.1/microsoft.extensions.logging.6.0.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.logging.abstractions/6.0.4/microsoft.extensions.logging.abstractions.6.0.4.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.options/6.0.1/microsoft.extensions.options.6.0.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.options.dataannotations/6.0.1/microsoft.extensions.options.dataannotations.6.0.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.extensions.primitives/6.0.1/microsoft.extensions.primitives.6.0.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.featuremanagement/4.0.0-preview4/microsoft.featuremanagement.4.0.0-preview4.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.featuremanagement.aspnetcore/4.0.0-preview4/microsoft.featuremanagement.aspnetcore.4.0.0-preview4.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/microsoft.openapi/1.6.22/microsoft.openapi.1.6.22.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/swashbuckle.aspnetcore/7.3.1/swashbuckle.aspnetcore.7.3.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/swashbuckle.aspnetcore.swagger/7.3.1/swashbuckle.aspnetcore.swagger.7.3.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/swashbuckle.aspnetcore.swaggergen/7.3.1/swashbuckle.aspnetcore.swaggergen.7.3.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/swashbuckle.aspnetcore.swaggerui/7.3.1/swashbuckle.aspnetcore.swaggerui.7.3.1.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "/Users/dsaru/.nuget/packages/system.diagnostics.diagnosticsource/8.0.1/system.diagnostics.diagnosticsource.8.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}
