@@ -12,51 +12,69 @@ public class CarService
        this._cars = CsvLoader.LoadCarsFromCsv("car_price_dataset.csv");
     }
 
-    public object GetFilteredCars(string? brand, int? minYear, int? maxMileage, string? fuelType,
-        int? minPrice, int? maxPrice, string? sortBy, int page, int pageSize)
+    public async Task<CarSearchResult> GetFilteredCarsAsync(CarFilter filter)
    {
-       var query = this._cars.AsQueryable();
+       var filteredCars = _cars.AsQueryable();
 
-       if (!string.IsNullOrEmpty(brand))
-           query = query.Where(c => c.Brand.Contains(brand, StringComparison.OrdinalIgnoreCase));
-       if (minYear.HasValue)
-           query = query.Where(c => c.Year >= minYear.Value);
-       if (maxMileage.HasValue)
-           query = query.Where(c => c.Mileage <= maxMileage.Value);
-       if (!string.IsNullOrEmpty(fuelType))
-           query = query.Where(c => c.FuelType.Equals(fuelType, StringComparison.OrdinalIgnoreCase));
-       if (minPrice.HasValue)
-           query = query.Where(c => c.Price >= minPrice.Value);
-       if (maxPrice.HasValue)
-           query = query.Where(c => c.Price <= maxPrice.Value);
+    if (!string.IsNullOrEmpty(filter.Brand))
+        filteredCars = filteredCars.Where(c => c.Brand.Contains(filter.Brand, StringComparison.OrdinalIgnoreCase));
 
-       query = sortBy switch
-       {
-           "price_asc" => query.OrderBy(c => c.Price),
-           "price_desc" => query.OrderByDescending(c => c.Price),
-           "year_asc" => query.OrderBy(c => c.Year),
-           "year_desc" => query.OrderByDescending(c => c.Year),
-           "mileage_asc" => query.OrderBy(c => c.Mileage),
-           "mileage_desc" => query.OrderByDescending(c => c.Mileage),
-           _ => query
-       };
+    if (filter.MinYear.HasValue)
+        filteredCars = filteredCars.Where(c => c.Year >= filter.MinYear);
 
-       var totalCount = query.Count();
-       var results = query.Skip((page - 1) * pageSize).Take(pageSize).ToList();
+    if (filter.MaxMileage.HasValue)
+        filteredCars = filteredCars.Where(c => c.Mileage <= filter.MaxMileage);
 
-       var aggregations = new
-       {
-           averagePrice = results.Any() ? results.Average(c => c.Price) : 0,
-           mostCommonFuelType = results.GroupBy(c => c.FuelType).OrderByDescending(g => g.Count())
-               .Select(g => g.Key).FirstOrDefault(),
-           newestCarYear = results.Any() ? results.Max(c => c.Year) : 0
-       };
+    if (!string.IsNullOrEmpty(filter.FuelType))
+        filteredCars = filteredCars.Where(c => c.FuelType.Equals(filter.FuelType, StringComparison.OrdinalIgnoreCase));
 
-       return new
-       {
-           results,
-           aggregations,
-           pagination = new { totalCount, page, pageSize }
-       };
+    if (filter.MinPrice.HasValue)
+        filteredCars = filteredCars.Where(c => c.Price >= filter.MinPrice);
+
+    if (filter.MaxPrice.HasValue)
+        filteredCars = filteredCars.Where(c => c.Price <= filter.MaxPrice);
+
+    // Sorting
+    filteredCars = filter.SortBy?.ToLower() switch
+    {
+        "price_asc" => filteredCars.OrderBy(c => c.Price),
+        "price_desc" => filteredCars.OrderByDescending(c => c.Price),
+        "year_asc" => filteredCars.OrderBy(c => c.Year),
+        "year_desc" => filteredCars.OrderByDescending(c => c.Year),
+        "mileage_asc" => filteredCars.OrderBy(c => c.Mileage),
+        "mileage_desc" => filteredCars.OrderByDescending(c => c.Mileage),
+        _ => filteredCars
+    };
+
+    // Pagination
+    var totalCount = filteredCars.Count();
+    var carsList = filteredCars.Skip((filter.Page - 1) * filter.PageSize)
+                               .Take(filter.PageSize)
+                               .ToList();
+
+    // Aggregations
+    var averagePrice = carsList.Any() ? carsList.Average(c => c.Price) : 0;
+    var mostCommonFuelType = carsList.GroupBy(c => c.FuelType)
+                                     .OrderByDescending(g => g.Count())
+                                     .Select(g => g.Key)
+                                     .FirstOrDefault();
+    var newestCarYear = carsList.Any() ? carsList.Max(c => c.Year) : 0;
+
+    return new CarSearchResult
+    {
+        Results = carsList,
+        Aggregations = new CarAggregations
+        {
+            AveragePrice = averagePrice,
+            MostCommonFuelType = mostCommonFuelType,
+            NewestCarYear = newestCarYear
+        },
+        Pagination = new PaginationInfo
+        {
+            TotalCount = totalCount,
+            Page = filter.Page,
+            PageSize = filter.PageSize
+        }
+    };
    }
 }
