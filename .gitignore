@@ -1,0 +1,38 @@
+# Build and binary files
+bin/
+obj/
+
+# Rider / JetBrains IDE files
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Visual Studio Code files
+.vscode/
+
+# Logs and debug
+*.log
+*.tlog
+*.ilk
+*.pdb
+
+# User-specific settings
+*.db
+*.bak
+*.swp
+*.sln.cache
+
+# Dependency caching
+node_modules/
+packages/
+
+# Output files
+*.exe
+*.dll
+*.so
+*.dylib
+
+# Dotnet tools
+.dotnet-tools/
